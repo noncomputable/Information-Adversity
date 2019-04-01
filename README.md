@@ -8,6 +8,7 @@ it'll calculate the individual and aggregate information adversity and dump it t
 Data should be provided as three CSV files.
 
 1. Product data. The columns are distinct substitute sets and rows are the ranks of distinct products. The row number is taken to be the ID of the product in its set:
+
 | Charger | Fire Hose | Pen |
 |:-------:|:---------:|:---:|
 |    1    |     2     |  2  |
@@ -17,6 +18,7 @@ Data should be provided as three CSV files.
 |    5    |           |     |
 
 2. Choice data. The columns are distinct substitute sets and rows are comma-separated IDs of the products each user nominates. The row number is taken to be the ID of the user whose choice data it is:
+
 | Charger | Fire Hose | Pen |
 |:-------:|:---------:|:---:|
 |   3,2   |     1     |  4  |
@@ -24,6 +26,7 @@ Data should be provided as three CSV files.
 |    5    |    1,2    |  4  |
 
 3. Subject data. The rows are the IDs of the interface assigned to the users. The row number is taken to be the ID of the user assigned that interface:
+
 | Interface ID |
 |:------------:|
 |       1      |
