@@ -24,9 +24,9 @@ Data should be provided as three CSV files. The examples below are what I could 
 
 | Charger | Fire Hose | Pen |
 |:-------:|:---------:|:---:|
-|   3,2   |     1     |  4  |
-|  2,7,3  |     2     | 4,3 |
-|    5    |    1,2    |  4  |
+|   3;2   |     1     |  4  |
+|  2;7;3  |     2     | 4;3 |
+|    5    |    1;2    |  4  |
 
 3. Interface data. The columns are distinct interfaces. Each has one row: a semicolon-separated list of the IDs of users assigned to it.
 
