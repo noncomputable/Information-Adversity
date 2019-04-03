@@ -102,7 +102,7 @@ function getInfoAdv() {
 
 		//Calculate and store the information adversity for each individual.
 		for (let subject_id of subject_ids) {
-			result[interface_id].push(getIndivInfoAdv(subject_id));
+			result[interface_id][subject_id] = getIndivInfoAdv(subject_id);
 		}
 
 		//Calculate and store the aggregate information adversity for all users of the interface.
