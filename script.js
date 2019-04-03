@@ -91,7 +91,7 @@ function getInfoAdv() {
 	var result = {};
 
 	if (Object.values(inputs).includes(null)) {
-		return "Some data is either missing or couldn't be parsed.";
+		throw "Some data is either missing or couldn't be parsed.";
 	}
 
 	//Calculate the individual and aggregate info adversities for each interface.
