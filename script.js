@@ -1,7 +1,7 @@
 //Read & parse data from files entered in the form.
 
 var inputs = {"product": null, "choice": null, "interface": null},
-ranked_products;
+ranked_product_ids;
 
 for (let input_label of Object.keys(inputs)) {
 	var input_el = document.getElementById(input_label);
@@ -14,7 +14,7 @@ function readFile(evnt) {
 		inputs[evnt.target.id] = parseInput(reader.result);
 
 		if (evnt.target.id === "product") {
-			ranked_products = sort_rank_products();
+			ranked_product_ids = sort_rank_products();
 		}
 	};
 
@@ -44,15 +44,16 @@ function parseInput(input) {
 	return data;
 }
 
+//NOTE: ranked_product_ids were a distraction and are no longer being used.
 //Sort the product qualities in each set so that their indices correspond to their rank.
 function sort_rank_products() {
-	var ranked_products = {};
+	var ranked_products_ids = {};
 
 	for (let set_label of Object.keys(inputs["product"])) {
-		ranked_products[set_label] = inputs["product"][set_label].sort((a,b) => (a - b));
+		ranked_products_ids[set_label] = inputs["product"][set_label].sort((a,b) => (a - b));
 	}
 
-	return ranked_products;
+	return ranked_product_ids;
 }
 
 //Generate and download the information adversity data if button clicked.
@@ -125,13 +126,14 @@ function getIndivInfoAdv(subject_id) {
 		
 		//Get the ordinal loss of each choice.
 		for (let choice_id of choices) {
-			let choice_rank = ranked_products[set_label].indexOf(inputs["product"][set_label][choice_id]);
+			let choice_rank = inputs["product"][set_label][choice_id];
+
 			choice_ranks.push(choice_rank);
 		}
 
 		let set_adversity = choice_ranks.reduce((total, current) => total + current) / choices.length;
 		sum_expected_ranks += set_adversity,
-		sum_max_ranks += inputs["product"][set_label].length - 1;
+		sum_max_ranks += inputs["product"][set_label].filter(el => el.length > 0).length - 1;
 	}
 	
 	return sum_expected_ranks / sum_max_ranks;
