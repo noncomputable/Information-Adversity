@@ -8,7 +8,7 @@ You can use it live [here](http://noncomputable.github.io/Information-Adversity/
 Given data from a choice experiment, 
 it'll calculate the individual and aggregate information adversity and dump it to a CSV file.
 
-Data should be provided as three CSV files. The tables below are quick, low-quality toy examples.
+Data should be provided as three CSV files. The tables below are just toy examples, not how actual data should look.
 
 1. Product data. The columns are distinct substitute sets and rows are the qualities of distinct products in those sets. The row number is taken to be the ID of the product in its set:
 
