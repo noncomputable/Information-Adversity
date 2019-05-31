@@ -14,10 +14,10 @@ Data should be provided as three CSV files. The tables below are just toy exampl
 
 | Charger | Fire Hose | Pen |
 |:-------:|:---------:|:---:|
-|    1    |     2     |  2  |
-|    2    |     3     |  5  |
-|    3    |     7     |  1  |
-|    4    |           |  9  |
+|    1    |     2     |  1  |
+|    2    |     1     |  4  |
+|    3    |     3     |  2  |
+|    4    |           |  3  |
 |    5    |           |     |
 
 2. Choice data. The columns are distinct substitute sets and rows are semicolon-separated IDs of the products each user nominates in the given set. The row number is taken to be the ID of the user whose choice data it is:
