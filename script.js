@@ -22,7 +22,7 @@ function readFile(evnt) {
 };
 
 function parseInput(input) {
-	var rows = input.split("\n"),
+	var rows = input.split("\r\n"),
 	columns = rows[0].split(","),
 	data = {};
 	
