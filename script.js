@@ -12,10 +12,6 @@ function readFile(evnt) {
         var reader = new FileReader();
         reader.onload = function () {
 		inputs[evnt.target.id] = parseInput(reader.result);
-
-		if (evnt.target.id === "product") {
-			ranked_product_ids = sort_rank_products();
-		}
 	};
 
 	reader.readAsBinaryString(evnt.target.files[0]);
@@ -103,7 +99,7 @@ function getInfoAdv() {
 
 		//Calculate and store the information adversity for each individual.
 		for (let subject_id of subject_ids) {
-			result[interface_id][subject_id] = getIndivInfoAdv(subject_id);
+			result[interface_id][subject_id - 1] = getIndivInfoAdv(subject_id);
 		}
 
 		//Calculate and store the aggregate information adversity for all users of the interface.
@@ -121,19 +117,20 @@ function getIndivInfoAdv(subject_id) {
 
 	//Get their information adversity for each substitute set.
 	for (let set_label of Object.keys(inputs["choice"])) {
-		let choices = inputs["choice"][set_label][subject_id].split(";"),
+		let isolated_set = inputs["product"][set_label].filter(el => el.length > 0),
+		choices = inputs["choice"][set_label][subject_id - 1].split(";"),
 		choice_ranks = [];
 		
 		//Get the ordinal loss of each choice.
 		for (let choice_id of choices) {
-			let choice_rank = inputs["product"][set_label][choice_id];
+			let choice_rank = parseInt(isolated_set[choice_id - 1]);
 
 			choice_ranks.push(choice_rank);
 		}
 
 		let set_adversity = choice_ranks.reduce((total, current) => total + current) / choices.length;
 		sum_expected_ranks += set_adversity,
-		sum_max_ranks += inputs["product"][set_label].filter(el => el.length > 0).length - 1;
+		sum_max_ranks += isolated_set.length - 1;
 	}
 	
 	return sum_expected_ranks / sum_max_ranks;
